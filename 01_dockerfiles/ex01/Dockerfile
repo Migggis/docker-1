@@ -10,7 +10,7 @@ RUN apt update -y && \
 	rm teamspeak3-server_linux_amd64-3.11.0.tar.bz2 && \
 	cd teamspeak3-server_linux_amd64 && \
 	touch .ts3server_license_accepted
-
-ENTRYPOINT	cd teamspeak3-server_linux_amd64 && \
-# ./ts3server_minimal_runscript.sh createinifile=1 && \
-			./ts3server_startscript.sh start
+CMD	cd teamspeak3-server_linux_amd64 && \
+	./ts3server_startscript.sh start && \
+	tail -f /bin/bash
+# docker run -d -p 9987:9987/udp -p 10011:10011/tcp -p 30033:30033/tcp --name teamspeak teamspeak
